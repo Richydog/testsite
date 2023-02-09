@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{%load static%}
+{% load sidebar %}
+
+{% block content %}
+
+
+ <div class="container">
+                <div class="row">
+
+<div class="container text-center">
+  <div class="row">
+<h1>Профиль</h1>
+    <div class="col-md-4" >
+      <div class="image">
+                                        <img src="{{ user.profile.image.url }}" alt=""> </div>
+
+    </div>
+    <div class="col-md-4" style="background: #bcdcce">
+       <h3><a href="#">{{ user.username }}</a></h3>
+    </div>
+    <div class="col-md-4"style="background: #bcdcce">
+     <h3><a href="#">{{ user.email }}</a></h3>
+       </div>
+    </div>
+  </div>
+</div>
+
+
+     <div class="container">
+<div class="content-blocker">
+
+<h3 >Изменить профиль</h3>
+<div >
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{  user_form.as_p  }}
+     {{ profile_form.as_p }}
+    <button type="submit" class="btn btn-primary btn-block">Save changes</button>
+
+</form>
+</div>
+</div>
+    </div>
+
+          </div>
+                </div>
+{% endblock  %}

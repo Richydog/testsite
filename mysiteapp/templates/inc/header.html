@@ -1,0 +1,100 @@
+{% load static %}
+{% load menu %}
+
+<header class="header">
+            <div class="container">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <span class="navbar-text">
+        {% if request.user.is_authenticated %}
+
+            <span><a href="#">Hello,{{user.username}}</a> | <a href="{% url 'logout' %}">Logout</a> | <a
+          class="nav-link"
+                                                                                            href="{% url 'add_posts' %}">Добавить
+      новость</a> | <a class="nav-item nav-link" href="{% url 'profile' %}">Профиль</a>| <a class="nav-item"
+                                                                                            href="{% url 'admin:index' %}">
+                                        Админ-панель
+                                    </a></span>
+
+     {% else %}
+
+    <span> <a href="{% url 'register' %}">Register</a> | <a href="{% url 'login' %}">Login</a></span>
+     {% endif %}
+    </nav>
+</div>
+
+
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-2">
+                        <div class="logo">
+                               <span> <h2><a href="{%url 'home'%}">Classic</a></h2></span>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-10">
+
+                           <div class="menu">
+
+                               {% show_menu %}
+                            <!--<ul>
+                               {% if request.user.is_authenticated %}
+
+                                 {% endif %}
+
+
+                            <ul>
+                                <li class="active"><a href="{% url 'home' %}">Home</a></li>
+                                <li><a href="#">lifestyle</a></li>
+                                <li><a href="#">Nature</a></li>
+                                <li><a href="#">photography</a></li>
+                                 <li><a href="{% url 'register'%}">Register</a></li>
+                                 <li><a href="{% url 'login' %}">Login</a></li>
+                                 {% if request.user.is_authenticated %}
+                                  <li><a href="#">Add Post</a></li>
+                                 <li><a href="{% url 'logout'%}">Logout</a></li>
+                                 {% endif %}
+                            </ul>
+
+                        </div>-->
+
+                    </div>
+
+                </div>
+
+ </div>
+
+
+ {% if messages %}
+
+            {% for message in messages %}
+
+                {% if message.tags == 'error' %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ message }}
+                    </div>
+                {% else %}
+                    <div class="alert alert-{{ message.tags }}" role="alert">
+                        {{ message }}
+                    </div>
+                {% endif %}
+
+            {% endfor %}
+
+            {% endif %}
+            </div>
+<div class="container">
+          <style>
+   hr {
+    border: none; /* Убираем границу */
+    background-color: #0f52ce; /* Цвет линии */
+    color: #1735cc; /* Цвет линии для IE6-7 */
+    height: 2px; /* Толщина линии */
+   }
+  </style>
+    <hr>
+
+
+</div>
+    </header>

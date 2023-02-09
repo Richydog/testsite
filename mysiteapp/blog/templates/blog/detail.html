@@ -1,0 +1,28 @@
+{% extends 'base.html'%}
+{% block content%}
+<div class="container">
+<div class="content-blocker">
+
+<h1 class="mt-4">Статья {{get_article.name }}</h1>
+    <p><a href="/">Вернуться назад</a> </p>
+    <p>Дата создания {{get_article.create_date}}</p>
+    <p>Название {{get_article.name}}</p>
+    <p>Содержание  {{get_article.text}}</p>
+
+
+    <p>Коментарии</p>
+
+    <p>Добавить комментарий</p>
+
+<div >
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary btn-block">Сохранить</button>
+
+</form>
+</div>
+</div>
+    </div>
+
+{% endblock%}
