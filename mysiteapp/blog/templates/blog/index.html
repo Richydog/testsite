@@ -42,7 +42,7 @@
   {%if post.is_published%}
                                     <p>{{post.category}}</p>
                                     {% if post.photo %}
-                        <img src="{{ post.photo.url }}" alt="{{ post.title }}">
+                        <img src="{{ post.photo.url }}" alt="{{ post.title }}" width="300" height="200">
                         {% else %}
                         <img src="https://picsum.photos/id/1060/300/201/?blur=2" alt="{{ post.title }}">
                         {% endif %}
